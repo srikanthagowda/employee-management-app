@@ -27,6 +27,13 @@ pipeline {
             }
         }
 
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t employee-management-backend:jenkins ./backend'
+                bat 'docker build -t employee-management-frontend:jenkins ./frontend'
+            }
+        }
+
         stage('Test') {
             steps {
                 echo 'Build completed successfully'
